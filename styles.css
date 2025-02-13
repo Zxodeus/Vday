@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffccd5; /* Soft pink background */
+    background-image: linear-gradient(45deg, rgba(255, 204, 213, 0.5), rgba(255, 182, 193, 0.5)),
+                      url('swirls.png'); /* Swirls and gradient for fun background */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    transition: background 1s ease-out; /* Smooth background fade */
+}
+
+/* Add animation for stripes effect */
+@keyframes stripeAnimation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Stripe effect on the background */
+.stripes {
+    background: repeating-linear-gradient(45deg, #ffccd5, #ffccd5 10px, #ffb6c1 10px, #ffb6c1 20px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: stripeAnimation 15s linear infinite;
+    z-index: 0; /* Put it behind all elements */
+}
+
+/* Add random blobs in the background */
+.blob {
+    position: absolute;
+    background: rgba(255, 200, 200, 0.8);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    animation: float 10s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(100px) translateY(50px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.flower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('flower.jpg'); /* Add flower image from local directory */
+    background-size: cover;
+    animation: flowerAnimation 15s infinite;
+    z-index: -1;
+}
+
+
+/* Add the flower-fall animation */
+@keyframes flower-fall {
+    0% {
+        top: -50px;
+        opacity: 1;
+    }
+    100% {
+        top: 100vh;  /* Move to the bottom */
+        opacity: 0;  /* Fade out */
+    }
+}
+
+.flower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('flower.jpg'); /* Make sure you use the correct path to the flower image */
+    background-size: cover;
+    animation: flower-fall 5s linear infinite;
+    z-index: 9999;  /* Ensure flowers appear in front */
+    opacity: 1;  /* Initially visible */
+}
+
+
+
+/* Central content area */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Ensure the container content stays above background */
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Smooth fade for background */
+}
+
+/* Header */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #ff4c6f;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Front Page Image (pp.jpg) */
+#frontImage {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 30px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Default button styles */
+button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    z-index: 2;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+/* Emoji rain */
+.emoji-shower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: emoji-fall 3s linear infinite;
+    opacity: 0;
+}
+
+@keyframes emoji-fall {
+    0% {
+        top: -20px;
+        opacity: 1;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
+
+video {
+    width: 400px; /* Reduced size */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Prevent the video from overflowing */
+    border-radius: 10px;
+    z-index: 3;
+    position: absolute;
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Correct positioning to center it exactly */
+    display: none; /* Hide the video initially */
+}
+
+/* Overlay with ILY sign on the video */
+#ilyOverlay {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: rgb(174, 90, 166);
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Bouncing Image Effect (DVD-style) */
+@keyframes bounceImage {
+    0% {
+        top: 10%;
+        left: 10%;
+    }
+    25% {
+        top: 10%;
+        left: 80%;
+    }
+    50% {
+        top: 80%;
+        left: 80%;
+    }
+    75% {
+        top: 80%;
+        left: 10%;
+    }
+    100% {
+        top: 10%;
+        left: 10%;
+    }
+}
+
+.bouncing-image {
+    position: absolute;
+    animation: bounceImage 10s linear infinite;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffccd5; /* Soft pink background */
+    background-image: linear-gradient(45deg, rgba(255, 204, 213, 0.5), rgba(255, 182, 193, 0.5)),
+                      url('swirls.png'); /* Swirls and gradient for fun background */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    transition: background 1s ease-out; /* Smooth background fade */
+}
+
+/* Other previous styles... */
+
+/* Video styles */
+video {
+    width: 400px; /* Reduced size */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Prevent the video from overflowing */
+    border-radius: 10px;
+    z-index: 3;
+    position: absolute;
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Correct positioning to center it exactly */
+    display: none; /* Hide the video initially */
+}
+
+/* Other previous styles... */
